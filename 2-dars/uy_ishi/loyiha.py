@@ -4,7 +4,7 @@ print("""Qaysi darajani tanlaysiz:
    2.o'rta
    3.qiyin
    0.chiqish""")
-son=int(input("(1-4) oraliqda son kiriting: "))
+son=int(input("(0-3) oraliqda son kiriting: "))
 while True:
    if son>=0 and son<=3:
       if son==1:
@@ -35,39 +35,38 @@ for i in range(1,4):
    son2=random.randint(boshi,oxiri)
    amal=random.choice(["-","+","*","//"])
    if amal=="-":
-      javob=int(input(f"Javobni yozing: {boshi}-{oxiri}="))
-      if javob==(boshi-oxiri):
+      javob=int(input(f"Javobni yozing: {son1}-{son2}="))
+      if javob==(son1-son2):
          print("To'g'ri javob🫡")
          sana+=1
       else:
          print("""Xato kiritdingiz❌
-   To'g'ri javob: """,boshi-oxiri)
+   To'g'ri javob: """,son1-son2)
    elif amal=="+":
-      javob=int(input(f"Javobni yozing: {boshi}+{oxiri}="))
-      if javob==(boshi+oxiri):
+      javob=int(input(f"Javobni yozing: {son1}+{son2}="))
+      if javob==(son1+son2):
          print("To'g'ri javob🫡")
          sana+=1
       else:
          print("""Xato kiritdingiz❌
-   to'g'ri javob: """,boshi+oxiri)
+   to'g'ri javob: """,son1+son2)
    elif amal=="*":
-      javob=int(input(f"Javobni yozing: {boshi}*{oxiri}="))
-      if javob==(boshi*oxiri):
+      javob=int(input(f"Javobni yozing: {son1}*{son2}="))
+      if javob==(son1*son2):
          print("To'g'ri javob🫡")
          sana+=1
       else:
          print("""Xato kiritdingiz❌
-   To'g'ri javob: """,boshi*oxiri)
+   To'g'ri javob: """,son1*son2)
    else:
-      javob=int(input(f"Javobni yozing: {boshi}/{oxiri}="))
-      if javob==(boshi/oxiri):
+      javob=float(input(f"Javobni yozing: {son1}/{son2}="))
+      if javob==(son1/son2):
          print("To'g'ri javob🫡")
          sana+=1
       else:
          print("""Xato kiritdingiz❌
-   To'g'ri javob: """,boshi/oxiri)
+   To'g'ri javob: """,son1/son2)
 if son!=0:
-   
    print(f"3 ta misoldan {sana} tasi to'g'ri")
 
 
