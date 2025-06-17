@@ -46,6 +46,9 @@ class Cinema:
          print(f"Joy yetarli emas\n"
                f"Mavjud joy: {self.__movies[kino]}")
 
+
+
+
    def checkAvailability(self,move)->int:
       """So'ralgan filmdagi bo'sh joylar sonini qaytaradi"""
 

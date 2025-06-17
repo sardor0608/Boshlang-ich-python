@@ -4,14 +4,17 @@ class Library:
         self.__name=name
         self.__books=books 
         self.__members=members
-        self.__azolar=list()
         
+
+
     def get_azolar(self)->list:
-        return self.__azolar
+        return self.__members
     def get_name(self)->str:
         return self.__name
     def get_books(self)->dict:
         return self.__books
+    
+ 
 
     
         
@@ -23,33 +26,36 @@ class Library:
         else:
             self.__books[kitob]=soni
             
+
             
     def lendBook(self,xaridor,kitob)->list:
-        azolar=self.get_azolar()
-        kitoblar=self.get_books()
-        assert kitob in kitoblar, "Kitob kutbxonada yo'q"
-        if kitoblar[kitob]>0:
-            self.get_azolar().append({xaridor:kitob})
-            self.get_books()[kitob]-=1
+        assert kitob in self.__books, "Kitob kutbxonada yo'q"
+        if self.__books[kitob]>0:
+            if xaridor in self.__members:
+                self.__members[xaridor].append(kitob)
+            else:
+                self.__members[xaridor] = [kitob]
+            self.__books[kitob]-=1
         else:
             print("Kitob yetarli emas!")
 
                     
 
-
                 
-    def returnBook(self,members,books):
-        kitoblar=self.get_books() 
-        azolar=self.get_azolar()
-        assert isinstance(members,str),"Iltimos a'zo ismini to'g'ri kiriting!"
-        assert isinstance(books,str),"Iltimos kitob nomini to'g'ri kiriting!"
-        assert books in kitoblar,"Bu kitob foydalanuvchiga berilmagan!"
-        self.addBook(books,1)
+    def returnBook(self,member,book):
+        assert isinstance(member,str),"Iltimos a'zo ismini to'g'ri kiriting!"
+        assert isinstance(book,str),"Iltimos kitob nomini to'g'ri kiriting!"
+        self.addBook(book,1)
+        for key, value in self.__members.items():
+            if key == member:
+                if book in value:
+                    value.remove(book)
+                    break
+        if not self.__members[member]:
+            del self.__members[member]
 
             
                 
-
-
     def chiqar(self)->str:
         for kitob in self.__books.keys():
             print( f"Kitob nomi: {kitob}, soni: {self.__books[kitob]}" )              
@@ -66,5 +72,4 @@ print(library.get_azolar())
 print("=======")
 
 library.returnBook("Ali", "Python Basics")
-print(library.get_azolar())    
-
+print(library.get_azolar())
